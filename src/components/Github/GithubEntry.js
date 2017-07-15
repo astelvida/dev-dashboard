@@ -11,13 +11,12 @@ const GithubEntry = observer(({ entry }) => {
         watcher,
     } = entry;
     return (
-        <div>
-            <div>{fullName}</div>
-            <div>{htmlUrl}</div>
-            <div>{description}</div>
-            <div>{forks}</div>
-            <div>{watcher}</div>
-            <hr />
+        <div className="github-entry">
+            <span>{fullName}</span>
+            <span>{htmlUrl}</span>
+            <span>{description}</span>
+            <span>{forks}</span>
+            <span>{watcher}</span>
         </div>
     );
 });

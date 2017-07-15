@@ -1,14 +1,16 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-
 import DevTools from 'mobx-react-devtools';
-import GithubData from './Github/GithubData';
+import Github from './Github/Github';
+import Todos from './Todos/Todos';
 
-const App = observer(({ githubStore }) => {
-    console.log('STORE');
+// eslint-disable-next-line arrow-body-style
+const App = observer(({ todoStore, githubStore }) => {
+    console.log('GITHUB STORE', githubStore)
     return (
-        <div>
-            <GithubData githubStore={githubStore} />
+        <div className="app-container">
+            <Todos todoStore={todoStore} />
+            <Github githubStore={githubStore} />
             <DevTools />
         </div>
     );

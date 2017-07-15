@@ -2,12 +2,19 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 import GithubEntry from './GithubEntry';
+import Header from '../Header/Header';
 
-@observer class GithubData extends React.Component {
+@observer class Github extends React.Component {
+    componentDidMount() {
+        this.props.githubStore.getGithubData();
+    }
+    
     render() {
         const { githubStore } = this.props;
+        console.log('GITHUB STORE', githubStore);
         return (
-            <div>
+            <div className="github-container">
+                <Header title="Github Trending"/>
                 {githubStore.data.map(entry =>
                     <GithubEntry
                         entry={entry}
@@ -19,4 +26,4 @@ import GithubEntry from './GithubEntry';
     }
 }
 
-export default GithubData;
+export default Github;
