@@ -1,15 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { observable, computed, action } from 'mobx';
-import { observer } from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
+import githubStore from './stores/githubStore';
+import App from './components/App';
 
-const App = observer(() => {
-    return (
-        <div>
-           Hello
-        </div>
-    );
-})
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App githubStore={githubStore}/>, document.getElementById('root'));
