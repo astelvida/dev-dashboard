@@ -31,7 +31,7 @@ import Header from '../Header/Header';
     render() {
         const { todoStore } = this.props;
         return (
-            <div className="todo-container">
+            <div className="col-2 todo-container">
                 <Header title="Todos"/>
                 <input
                     className="todo-input"

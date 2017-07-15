@@ -1,13 +1,77 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
     width: 90%;
+    margin: 0 auto;
+    font-size: 1em;
+    max-width: 950px; 
 }
 
 .app-container {
-    border: 5px solid red;
+     border: 2px solid darkgrey; 
 }
 
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6 {
+    min-height: 150px;
+    float: left;
+    /* margin-right: 3.333%; */
+    margin-bottom: 10px;
+}
+
+.col-1 {
+    width: 16.666%;
+    /* border: 2px solid green; */
+}
+
+.col-2 {
+    width: 33.333%;
+     border: 2px solid green; 
+
+}
+
+.col-3 {
+    width: 50.000%;
+    /* border: 2px solid green; */
+}
+
+.col-4 {
+    width: 66.666%;
+     border: 2px solid green; 
+}
+
+.col-5 {
+    width: 83.333%;
+    /* border: 2px solid green; */
+}
+
+.col-6 {
+    width: 100.000%;
+    border: 2px solid green;
+}
+
+/*****
+SPINNER
+*****/
+.spinner {
+
+}
+
+/*****
+HEADER
+*****/
+.sub-header {
+
+}
+/*****
+TODOS
+*****/
 .todo-container {
-    border: 5px solid blue;
+    border: 2px solid blue;
 }
 
 .todo-list {
@@ -33,3 +97,31 @@ body {
 .todo-title {
     
 }
+
+/*****
+GITHUB
+*****/
+.github-container {
+
+}
+
+.github-repo-list {
+
+}
+
+.repo-entry {
+
+}
+
+.repo-attribute {
+
+}
+
+.repo-attribute-label {
+
+}
+
+.repo-name {
+    font-size: 20px;
+}
+

@@ -6,7 +6,6 @@ import Todos from './Todos/Todos';
 
 // eslint-disable-next-line arrow-body-style
 const App = observer(({ todoStore, githubStore }) => {
-    console.log('GITHUB STORE', githubStore)
     return (
         <div className="app-container">
             <Todos todoStore={todoStore} />

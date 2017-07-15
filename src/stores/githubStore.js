@@ -1,11 +1,11 @@
 import { observable, action } from 'mobx';
 import axios from 'axios';
 
-const GITHUB_URL =' https://api.github.com/search/repositories';
+const GITHUB_URL = 'https://api.github.com/search/repositories';
 
 class GithubStore {
-    @observable data = [];
-    @observable loading = true;
+    @observable githubData = [];
+    @observable loading = false;
     @observable error = false;
 
     getUrlDateParameter = () => {
@@ -19,14 +19,16 @@ class GithubStore {
     }
 
     @action getGithubData() {
+        this.loading = true;
         if (localStorage.github) {
-            this.data = JSON.parse(localStorage.github);
+            this.githubData = JSON.parse(localStorage.github);
+            this.loading = false;
         } else {
             const date = this.getUrlDateParameter();
-            axios.get(`${GITHUB_URL}?q=javascript+created:>${date}&sort=stars&order=desc`)
+            axios.get(`${GITHUB_URL}?q=language%3Ajavascript+created%3A>${date}&sort=stars&order=desc`)
                 .then((resp) => {
                     localStorage.setItem('github', JSON.stringify(resp.data.items));
-                    this.data = resp.data.items;
+                    this.githubData = resp.data.items;
                     this.loading = false;
                 })
                 .catch((error) => {
