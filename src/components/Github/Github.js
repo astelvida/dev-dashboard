@@ -14,8 +14,12 @@ import Spinner from '../Spinner/Spinner';
         return this.props.githubStore.goToRepoUrl(id);
     }
 
-    markVisited = (id) => {
-        return this.props.githubStore.markVisited(id);
+    addTodo = (title, meta) => {
+        return this.props.todoStore.addTodo(title, meta);
+    }
+
+    markAsAdded = (id) => {
+        return this.props.githubStore.markAsAdded(id);
     }
 
     render() {
@@ -31,7 +35,8 @@ import Spinner from '../Spinner/Spinner';
                      githubData.map(entry => (
                         <GithubEntry
                             goToRepoUrl={this.goToRepoUrl}
-                            markVisited={this.markVisited}
+                            addTodo={this.addTodo}
+                            markAsAdded={this.markAsAdded}
                             entry={entry}
                             key={entry.id}
                         />

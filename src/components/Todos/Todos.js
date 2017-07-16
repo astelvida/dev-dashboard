@@ -5,8 +5,7 @@ import { observer } from 'mobx-react';
 import Header from '../Header/Header';
 
 @observer class Todos extends React.Component {
-
-
+    
     addTodo = () => {
         this.props.todoStore.addTodo(this.todoInput.value);
         this.todoInput.value = '';
@@ -63,7 +62,13 @@ import Header from '../Header/Header';
                                 checked={todo.completed}
                                 onChange={this.todoStatusChange}
                             />
-                            {todo.title}
+                            <span className="todo-title">
+                            {
+                                Object.keys(todo.meta).length ?
+                                <a href={todo.meta.html_url}>{todo.title}</a> :
+                                todo.title
+                            }
+                            </span>
                         </li>
                     )}
                 </ul>

@@ -31,7 +31,10 @@ class GithubStore {
             const date = this.getUrlDateParameter();
             axios.get(`${GITHUB_URL}?q=language%3Ajavascript+created%3A>${date}&sort=stars&order=desc`)
                 .then((resp) => {
-                    resp.data.items.forEach(item => item.visited = false);
+                    resp.data.items.forEach(item => {
+                        item.visited = false;
+                        item.marked = false;
+                    });
                     localStorage.setItem('github', JSON.stringify(resp.data.items));
                     this.githubData = resp.data.items;
                     this.loading = false;
@@ -43,12 +46,15 @@ class GithubStore {
         }
     }
 
-    // @action 
+    @action markAsAdded(id) {
+        const repo = this.getRepoById(id);
+        repo.marked = true;
+    }
 
     @action goToRepoUrl(id) {
         const repo = this.getRepoById(id);
         repo.visited = true;
-        // window.open(repo.html_url, '_blank');
+        window.open(repo.html_url, '_blank');
     }
 }
 

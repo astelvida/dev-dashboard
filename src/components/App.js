@@ -9,7 +9,7 @@ const App = observer(({ todoStore, githubStore }) => {
     return (
         <div className="app-container">
             <Todos todoStore={todoStore} />
-            <Github githubStore={githubStore} />
+            <Github githubStore={githubStore} todoStore={todoStore}/>
             <DevTools />
         </div>
     );

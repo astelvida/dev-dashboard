@@ -73,8 +73,8 @@ TODOS
 
 .todo-entry {
     word-break: break-all;
-	/* padding: 15px 15px 15px 60px; */
-	display: block;
+    font-size: 14px;
+    padding-bottom: 10px;
 	line-height: 1.2;
 }
 
@@ -83,7 +83,7 @@ TODOS
 }
 
 .todo-title {
-    
+    padding-left: 5px;
 }
 
 /*****

@@ -2,18 +2,25 @@ import React from 'react';
 
 import { observer } from 'mobx-react';
 
-const GithubEntry = observer(({ entry, goToRepoUrl }) => {
+const GithubEntry = observer(({ entry, goToRepoUrl, addTodo, markAsAdded }) => {
     const {
         id,
         full_name: fullName,
         description,
         watchers_count: stars,
         visited,
+        marked,
     } = entry;
 
     const handleUrlClick = (e) => {
         e.preventDefault();
         goToRepoUrl(id);
+    };
+
+    const handleAddAsTodoClick = (e) => {
+        e.preventDefault();
+        addTodo(fullName, entry);
+        markAsAdded(id);
     };
 
     return (
@@ -28,14 +35,21 @@ const GithubEntry = observer(({ entry, goToRepoUrl }) => {
                     {fullName}
                 </span>
                 <div className="repo-button-container">
-                    <button className="repo-button">Add as Todo</button>
+                    <button
+                        className="repo-button"
+                        onClick={handleAddAsTodoClick}
+                    >
+                        {marked ?  'Remove Todo' : 'Add Todo'}
+                    </button>
                 </div>
             </div>
 
             <div className="repo-attributes-container">
                 <span className="repo-description-text">{description}</span>
                 <div className="repo-stars-container">
-                    <span className="repo-stars-text"><i className="fa fa-star"></i> {stars}</span>
+                    <span className="repo-stars-text">
+                        <i className="fa fa-star"></i> {stars}
+                    </span>
                 </div>
             </div>
 
