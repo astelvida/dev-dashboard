@@ -2,10 +2,11 @@ import { observable, action } from 'mobx';
 import uuid from 'uuid';
 
 
-const Todo = (title, completed = false) => ({
+const Todo = (title, meta = {}, completed = false) => ({
     id: uuid.v4(),
     title,
     completed,
+    meta,
 });
 
 class TodoStore {
@@ -18,8 +19,11 @@ class TodoStore {
         return todoById;
     }
 
-    @action addTodo(newTodo) {
-        this.todos.push(Todo(newTodo));
+    @action addTodo(newTodo, meta) {
+        if (!newTodo) {
+            return;
+        }
+        this.todos.push(Todo(newTodo, meta));
     }
 
     @action toggleStatus(id) {
@@ -34,6 +38,7 @@ todoStore.addTodo('check rendering performance of uncontrolled vs controlled com
 todoStore.addTodo('contribute to open-source');
 todoStore.addTodo('create layouting for dev-dashboard app');
 
+window.todoStore = todoStore;
 
 export default todoStore;
 

@@ -31,23 +31,26 @@ import Header from '../Header/Header';
     render() {
         const { todoStore } = this.props;
         return (
-            <div className="col-2 todo-container">
+            <div className="todo-container">
                 <Header title="Todos"/>
-                <input
-                    className="todo-input"
-                    type='text'
-                    ref={(input) => { this.todoInput = input; }}
-                    onKeyPress={this.addTodoKeyPress}
-                />
+                
+                <div className="todo-input-container">
+                    <input
+                        className="todo-input"
+                        placeholder="What to do?"
+                        type='text'
+                        ref={(input) => { this.todoInput = input; }}
+                        onKeyPress={this.addTodoKeyPress}
+                    />
 
-                <button
-                    className="add-todo-button"
-                    onClick={this.addTodoClick}
-                >
-                    Add Todo
-                </button>
-
-                <div className="todo-list">
+                    <button
+                        className="add-todo-button"
+                        onClick={this.addTodoClick}
+                    >
+                        Add Todo
+                    </button>
+                </div>
+                <ul className="todo-list">
                     {todoStore.todos.map(todo =>
                         <li
                             className="todo-entry"
@@ -63,7 +66,7 @@ import Header from '../Header/Header';
                             {todo.title}
                         </li>
                     )}
-                </div>
+                </ul>
 
             </div>
         );

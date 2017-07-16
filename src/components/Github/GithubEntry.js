@@ -2,40 +2,41 @@ import React from 'react';
 
 import { observer } from 'mobx-react';
 
-const GithubEntry = observer(({ entry }) => {
+const GithubEntry = observer(({ entry, goToRepoUrl }) => {
     const {
+        id,
         full_name: fullName,
-        html_url: htmlUrl,
         description,
-        forks,
         watchers_count: stars,
+        visited,
     } = entry;
+
+    const handleUrlClick = (e) => {
+        e.preventDefault();
+        goToRepoUrl(id);
+    };
+
     return (
         <div className="repo-entry">
 
-            <div className="repo-attribute">
-                <span className="repo-name">{fullName}</span>
+            <div className="repo-header-container">
+                <span
+                    className="repo-name-text"
+                    style={visited ? { color: 'blue' } : {}}
+                    onClick={handleUrlClick}
+                >
+                    {fullName}
+                </span>
+                <div className="repo-button-container">
+                    <button className="repo-button">Add as Todo</button>
+                </div>
             </div>
 
-            <div className="repo-attribute">
-                <span className="repo-attribute-label">URL: </span>
-                <span className="repo-url">{htmlUrl}</span>
-            </div>
-
-            <div className="repo-attribute">
-                <span className="repo-attribute-label">Description: </span>
-                <span className="repo-description">{description}</span>
-            </div>
-
-
-            <div className="repo-attribute">
-                <span className="repo-attribute-label">#Stars: </span>
-                <span className="repo-stars">{stars}</span>
-            </div>
-
-            <div className="repo-attribute">
-                <span className="repo-attribute-label">#Forks: </span>
-                <span className="repo-forks">{forks}</span>
+            <div className="repo-attributes-container">
+                <span className="repo-description-text">{description}</span>
+                <div className="repo-stars-container">
+                    <span className="repo-stars-text"><i className="fa fa-star"></i> {stars}</span>
+                </div>
             </div>
 
         </div>

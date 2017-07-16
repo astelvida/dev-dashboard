@@ -18,6 +18,10 @@ class GithubStore {
         return `${today.getFullYear()}-${(formatDate('getMonth', 1))}-${formatDate('getDate')}`;
     }
 
+    getRepoById(id) {
+        return this.githubData.find(repo => id === repo.id);
+    }
+
     @action getGithubData() {
         this.loading = true;
         if (localStorage.github) {
@@ -27,6 +31,7 @@ class GithubStore {
             const date = this.getUrlDateParameter();
             axios.get(`${GITHUB_URL}?q=language%3Ajavascript+created%3A>${date}&sort=stars&order=desc`)
                 .then((resp) => {
+                    resp.data.items.forEach(item => item.visited = false);
                     localStorage.setItem('github', JSON.stringify(resp.data.items));
                     this.githubData = resp.data.items;
                     this.loading = false;
@@ -36,6 +41,14 @@ class GithubStore {
                     this.loading = false;
                 });
         }
+    }
+
+    // @action 
+
+    @action goToRepoUrl(id) {
+        const repo = this.getRepoById(id);
+        repo.visited = true;
+        // window.open(repo.html_url, '_blank');
     }
 }
 

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import githubStore from './stores/githubStore';
 import todoStore from './stores/todoStore';
 import App from './components/App';
-
-import styles from './styles/layout.css';
+import './styles/columns.css';
+import './styles/layout.css';
 
 ReactDOM.render(
     <App
@@ -13,4 +13,3 @@ ReactDOM.render(
     />,
     document.getElementById('root')
 );
-

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 html {
   box-sizing: border-box;
 }
@@ -8,86 +10,72 @@ html {
 body {
     width: 90%;
     margin: 0 auto;
-    font-size: 1em;
-    max-width: 950px; 
+    background: #f5f5f5;
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 13px;
+    color: #303333;
+    -webkit-font-smoothing: antialiased;
 }
 
 .app-container {
-     border: 2px solid darkgrey; 
+    display: flex;
+    border: 2px solid darkgrey;
 }
 
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6 {
-    min-height: 150px;
-    float: left;
-    /* margin-right: 3.333%; */
-    margin-bottom: 10px;
+.todo-container, .github-container {    
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: 10px; 
+    padding: 10px;
 }
 
-.col-1 {
-    width: 16.666%;
-    /* border: 2px solid green; */
-}
-
-.col-2 {
-    width: 33.333%;
-     border: 2px solid green; 
-
-}
-
-.col-3 {
-    width: 50.000%;
-    /* border: 2px solid green; */
-}
-
-.col-4 {
-    width: 66.666%;
-     border: 2px solid green; 
-}
-
-.col-5 {
-    width: 83.333%;
-    /* border: 2px solid green; */
-}
-
-.col-6 {
-    width: 100.000%;
-    border: 2px solid green;
-}
-
-/*****
-SPINNER
-*****/
-.spinner {
-
-}
-
-/*****
-HEADER
-*****/
-.sub-header {
-
-}
 /*****
 TODOS
 *****/
 .todo-container {
-    border: 2px solid blue;
+    background: #fff;
+    border: 2px solid aquamarine;
 }
 
+.todo-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background: #fff;
+}
+
+
 .todo-list {
-    
+    list-style: none;
+    padding-left: 0px;
 }
 
 .todo-input {
-    
+    min-height: 0px;
+    padding: 5px 5px 5px 10px;
+    font-size: 16px;
+    line-height: 1.5em;
+    flex: 5;
 }
 
-.add-todo-button {
-    
+.add-todo-button,
+.repo-button {
+    flex: 1;
+    border: 1px solid #E57373;
+    border-radius: 3px;
+    background: none;
+    font-size: 13px;
+    padding: 2px 5px 2px 5px; 
+    margin-left: 10px;
 }
 
 .todo-entry {
-    
+    word-break: break-all;
+	/* padding: 15px 15px 15px 60px; */
+	display: block;
+	line-height: 1.2;
 }
 
 .todo-checkbox {
@@ -102,26 +90,65 @@ TODOS
 GITHUB
 *****/
 .github-container {
-
+    border: 2px solid pink;
 }
 
 .github-repo-list {
-
+    padding: 5px;
+    margin-left: 10px;
 }
 
 .repo-entry {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10px;
 }
 
-.repo-attribute {
-
+.repo-attributes-container,
+.repo-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
 }
 
-.repo-attribute-label {
-
+.repo-stars-container,
+.repo-button-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.repo-name {
-    font-size: 20px;
+.repo-name-text {
+    font-size: 16px;
+    flex: 5;
 }
 
+.repo-button {
+    flex: none;
+}
+
+.repo-stars-text {
+    text-align: center;
+    padding: 2px 5px 2px 5px; 
+    border: 1px solid green;
+    border-radius: 3px;
+}
+
+.repo-description-text {
+    flex: 5;
+}
+
+
+@media (max-width: 640px) {
+    .app-container {
+        display: block;
+    }
+
+    .todo-container,
+    .github-container {
+        width: 100%;
+        margin: 0 0 10px 0;
+    } 
+}
