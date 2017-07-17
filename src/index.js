@@ -11,11 +11,13 @@ const rootEl = document.getElementById('root');
 const render = (Component, stores) =>
   ReactDOM.render(
     <AppContainer>
-      <Component stores={stores}/>
+      <Component {...stores} />
     </AppContainer>,
     rootEl
   );
 
 render(App, { githubStore, todoStore });
 
-if (module.hot) module.hot.accept('./components/App', () => render(App, { githubStore, todoStore }));
+if (module.hot) {
+    module.hot.accept('./components/App', () => render(App, { githubStore, todoStore }));
+}

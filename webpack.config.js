@@ -1,11 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     devtool: 'source-map',
     entry: [
-        // 'babel-polyfill',
         'react-hot-loader/patch',
         'webpack-hot-middleware/client',
         './src/index.js',
@@ -28,10 +26,12 @@ module.exports = {
     ],
 };
 
- // new HtmlWebpackPlugin({
-        //     template: './src/index_template.html',
-        //     title: 'DEV-DASHBOARD',
-        //     inject: 'body',
-        //     // hash: true,
-        //     // minifiy: true,
-        // }),
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const htmlWebpackPlugin = new HtmlWebpackPlugin({
+//     template: './index_template.html',
+//     title: 'DEV-DASHBOARD',
+//     inject: 'body',
+//     filename: 'index.html',
+//     hash: true,
+//     minifiy: true,
+// });

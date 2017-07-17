@@ -5,11 +5,11 @@ import Github from './Github/Github';
 import Todos from './Todos/Todos';
 
 // eslint-disable-next-line arrow-body-style
-const App = observer(({ stores }) => {
+const App = observer(({ todoStore, githubStore }) => {
     return (
         <div className="app-container">
-            <Todos todoStore={stores.todoStore} />
-            <Github githubStore={stores.githubStore} todoStore={stores.todoStore}/>
+            <Todos todoStore={todoStore} />
+            <Github githubStore={githubStore} todoStore={todoStore}/>
             <DevTools />
         </div>
     );
