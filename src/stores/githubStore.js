@@ -31,9 +31,9 @@ class GithubStore {
             const date = this.getUrlDateParameter();
             axios.get(`${GITHUB_URL}?q=language%3Ajavascript+created%3A>${date}&sort=stars&order=desc`)
                 .then((resp) => {
-                    resp.data.items.forEach(item => {
-                        item.visited = false;
-                        item.marked = false;
+                    resp.data.items.forEach((item) => {
+                        item.visited = false; // eslint-disable-line no-param-reassign
+                        item.marked = false;  // eslint-disable-line no-param-reassign
                     });
                     localStorage.setItem('github', JSON.stringify(resp.data.items));
                     this.githubData = resp.data.items;

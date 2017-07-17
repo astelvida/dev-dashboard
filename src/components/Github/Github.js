@@ -10,26 +10,20 @@ import Spinner from '../Spinner/Spinner';
         this.props.githubStore.getGithubData();
     }
 
-    goToRepoUrl = (id) => {
-        return this.props.githubStore.goToRepoUrl(id);
-    }
+    goToRepoUrl = id => this.props.githubStore.goToRepoUrl(id);
 
-    addTodo = (title, meta) => {
-        return this.props.todoStore.addTodo(title, meta);
-    }
+    addTodo = (title, meta) => this.props.todoStore.addTodo(title, meta);
 
-    markAsAdded = (id) => {
-        return this.props.githubStore.markAsAdded(id);
-    }
+    markAsAdded = id => this.props.githubStore.markAsAdded(id);
 
     render() {
-        const { 
+        const {
             githubData,
         } = this.props.githubStore;
         return (
             <div className="github-container">
                 <Header title="Github Trending"/>
-                <div className="github-list">
+                <div className="repo-list">
                     {githubData.length === 0 ?
                      <Spinner message="Loading..." /> :
                      githubData.map(entry => (

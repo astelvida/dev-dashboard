@@ -5,7 +5,6 @@ import { observer } from 'mobx-react';
 import Header from '../Header/Header';
 
 @observer class Todos extends React.Component {
-    
     addTodo = () => {
         this.props.todoStore.addTodo(this.todoInput.value);
         this.todoInput.value = '';
@@ -29,10 +28,12 @@ import Header from '../Header/Header';
 
     render() {
         const { todoStore } = this.props;
+        console.log('PROPS');
+        console.log('OMG');
         return (
             <div className="todo-container">
                 <Header title="Todos"/>
-                
+
                 <div className="todo-input-container">
                     <input
                         className="todo-input"

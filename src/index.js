@@ -1,3 +1,4 @@
+import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import githubStore from './stores/githubStore';
@@ -6,10 +7,15 @@ import App from './components/App';
 import './styles/columns.css';
 import './styles/layout.css';
 
-ReactDOM.render(
-    <App
-        todoStore={todoStore}
-        githubStore={githubStore}
-    />,
-    document.getElementById('root')
-);
+const rootEl = document.getElementById('root');
+const render = (Component, stores) =>
+  ReactDOM.render(
+    <AppContainer>
+      <Component stores={stores}/>
+    </AppContainer>,
+    rootEl
+  );
+
+render(App, { githubStore, todoStore });
+
+if (module.hot) module.hot.accept('./components/App', () => render(App, { githubStore, todoStore }));

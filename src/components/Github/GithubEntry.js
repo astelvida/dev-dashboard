@@ -20,7 +20,7 @@ const GithubEntry = observer(({ entry, goToRepoUrl, addTodo, markAsAdded }) => {
     const handleAddAsTodoClick = (e) => {
         e.preventDefault();
         addTodo(fullName, entry);
-        markAsAdded(id);
+        // markAsAdded(id);
     };
 
     return (
@@ -32,25 +32,21 @@ const GithubEntry = observer(({ entry, goToRepoUrl, addTodo, markAsAdded }) => {
                     style={visited ? { color: 'blue' } : {}}
                     onClick={handleUrlClick}
                 >
-                    {fullName}
+                    {fullName.split('/').join(' / ')}
                 </span>
-                <div className="repo-button-container">
-                    <button
-                        className="repo-button"
-                        onClick={handleAddAsTodoClick}
-                    >
-                        {marked ?  'Remove Todo' : 'Add Todo'}
-                    </button>
-                </div>
+                <button
+                    className="repo-button"
+                    onClick={handleAddAsTodoClick}
+                >
+                    {marked ? 'Remove Todo' : 'Add Todo'}
+                </button>
             </div>
 
             <div className="repo-attributes-container">
                 <span className="repo-description-text">{description}</span>
-                <div className="repo-stars-container">
-                    <span className="repo-stars-text">
-                        <i className="fa fa-star"></i> {stars}
-                    </span>
-                </div>
+                <span className="repo-stars">
+                    <i className="fa fa-star"></i> {stars}
+                </span>
             </div>
 
         </div>
